@@ -1,0 +1,25 @@
+[package]
+name = "pkg"
+version = "0.1.0"
+edition = "2021"
+description = "Программа для работы с метаданными руководства LFA"
+authors = ["Michail Krasnov <michail383krasnov@mail.ru>"]
+license = "MIT"
+
+[profile.release]
+lto = true
+strip = true
+debug = false
+panic = "abort"
+opt-level = "s"
+
+[dependencies]
+clap = { version = "4.5.8", features = ["derive"] }
+cursive = "0.20.0"
+lfa-rs = { git = "https://github.com/Linux-for-ARM/lfa-rs", version = "0.1.0" }
+md5 = "0.7.0"
+reqwest = "0.12.5"
+serde = { version = "1.0.203", features = ["derive"] }
+tokio = { version = "1", features = ["full"] }
+tokio-macros = { version = "0.2.0-alpha.6" } # FIXME: без этого костыля временно не работает сборка tokio...
+toml = "0.8.14"

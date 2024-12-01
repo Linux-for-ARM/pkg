@@ -45,6 +45,22 @@ fn main() -> Result<()> {
             let pkg_list = PkgList::parse(&pkg_list).unwrap();
             gen_pkglist::generate(md, &pkg_list).unwrap();
         }
+        Mode::All { md, pkg_list, pkg_info, wget_list, md5sums } => {
+            let pkg_list = PkgList::parse(&pkg_list).unwrap();
+            let pkg_info = PkgInfo::parse(&pkg_info).unwrap();
+
+            println!("Update md5sums...");
+            gen_md5sums_file(&pkg_list, &md5sums)?;
+
+            println!("Update wget-list...");
+            gen_wgetlst_file(&pkg_list, &wget_list)?;
+
+            println!("Generate md/*/pkgs/*.md files...");
+            gen_pkginfo::generate(&md, &pkg_list, &pkg_info).unwrap();
+
+            println!("Generate md/pkgs.md file...");
+            gen_pkglist::generate(&md, &pkg_list).unwrap();
+        }
     }
 
     Ok(())

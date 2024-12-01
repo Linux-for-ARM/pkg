@@ -78,4 +78,31 @@ pub enum Mode {
         #[arg(default_value_t = String::from("../packages.toml"))]
         pkg_list: String,
     },
+    /// Выполняет полную генерацию всех файлов (исключая режим `index`)
+    All {
+        /// Путь до директории с md-файлами руководства
+        #[arg(short, long)]
+        #[arg(default_value_t = String::from("../md"))]
+        md: String,
+
+        /// Путь до файла с описанием пакетов
+        #[arg(long)]
+        #[arg(default_value_t = String::from("../packages.toml"))]
+        pkg_list: String,
+
+        /// Путь до файла со списком пакетов
+        #[arg(long)]
+        #[arg(default_value_t = String::from("../pkg_info.toml"))]
+        pkg_info: String,
+
+        /// Путь до файла, в который будут записаны URL
+        #[arg(short, long)]
+        #[arg(default_value_t = String::from("../wget-list"))]
+        wget_list: String,
+
+        /// Путь до файла, в который будут записаны контрольные суммы
+        #[arg(short, long)]
+        #[arg(default_value_t = String::from("../md5sums"))]
+        md5sums: String,
+    },
 }

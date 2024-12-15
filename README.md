@@ -25,9 +25,3 @@ cargo build --release
 cp -v ./target/release/pkg ~/.local/bin
 export PATH=$PATH:$HOME/.local/bin
 ```
-
-<details>
-  <summary><b>Донат</b></summary>
-  <p>Вы можете отблагодарить автора за проделанную работу:</p>
-  <blockquote>2202206252335406 (Сбер; Михаил Сергеевич)</blockquote>
-</details>
